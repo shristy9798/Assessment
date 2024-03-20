@@ -17,26 +17,63 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: GNav(
-        tabs: [
-          GButton(
-            icon: Icons.home_outlined,
-            iconActiveColor: Colors.purple.shade200,
+      bottomNavigationBar: Stack(children: [
+        GNav(
+          tabs: [
+            GButton(
+              icon: Icons.home_outlined,
+              iconActiveColor: Colors.purple.shade200,
+            ),
+            GButton(
+              icon: Icons.location_on_outlined,
+              iconActiveColor: Colors.purple.shade200,
+            ),
+            GButton(
+              icon: Icons.calendar_month_outlined,
+              iconActiveColor: Colors.purple.shade200,
+            ),
+            GButton(
+              icon: Icons.person_2_outlined,
+              iconActiveColor: Colors.purple.shade200,
+            )
+          ],
+        ),
+        Positioned(
+          bottom: 0,
+          left: 0,
+          right: 0,
+          child: Container(
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.blue, Colors.white], // Gradient colors
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: Offset(0, 4), // changes position of shadow
+                ),
+              ],
+            ),
+            child: FloatingActionButton(
+              backgroundColor:
+                  Colors.transparent, // Set background color as transparent
+              elevation: 0, // Remove default elevation
+              shape: CircleBorder(),
+              onPressed: () {
+                // Add your action here
+              },
+              child: Icon(Icons.search, color: Colors.white),
+            ),
           ),
-          GButton(
-            icon: Icons.location_on_outlined,
-            iconActiveColor: Colors.purple.shade200,
-          ),
-          GButton(
-            icon: Icons.calendar_month_outlined,
-            iconActiveColor: Colors.purple.shade200,
-          ),
-          GButton(
-            icon: Icons.person_2_outlined,
-            iconActiveColor: Colors.purple.shade200,
-          )
-        ],
-      ),
+        ),
+      ]),
       appBar: AppBar(
         leading: Padding(
             padding: const EdgeInsets.all(15),
@@ -86,7 +123,7 @@ class _HomeState extends State<Home> {
             ),
           ),
         ],
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -142,8 +179,7 @@ class _HomeState extends State<Home> {
                                   color: Colors.grey.withOpacity(0.25),
                                   spreadRadius: 2,
                                   blurRadius: 8,
-                                  offset: const Offset(
-                                      0, 8), 
+                                  offset: const Offset(0, 8),
                                 ),
                               ],
                             ),
